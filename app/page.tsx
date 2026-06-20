@@ -35,12 +35,21 @@ export default function Home() {
         Premium Custom Apparel
       </p>
 
-      <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
-  Premium
-  <span className="text-orange-500"> Custom Apparel</span>
-  <br />
-  For Your Brand
+      <h1 className="text-6xl md:text-8xl font-bold leading-tight">
+  Custom
+  <span className="text-orange-500 block">
+    T-Shirts
+  </span>
+  For Your
+  <span className="block">
+    Brand
+  </span>
 </h1>
+
+<p className="text-xl text-gray-300 mt-6 max-w-xl">
+  Premium custom T-shirts, hoodies, sweatshirts and corporate merchandise
+  for startups, businesses, schools and creators.
+</p>
 
 <p className="mt-6 text-gray-400 text-lg max-w-xl">
   TEXTEE helps startups, businesses, creators and schools
