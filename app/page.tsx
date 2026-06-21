@@ -1,4 +1,9 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <main className="min-h-screen bg-black text-white">
 
@@ -13,21 +18,39 @@ export default function Home() {
           <h1 className="text-2xl font-bold text-orange-500">
             TEXTEE
           </h1>
-          <div className="hidden md:flex gap-8">
-            <a href="#home">Home</a>
-            <a href="#products">Products</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </div>
+          <>
+  {/* Desktop Menu */}
+  <div className="hidden md:flex gap-8">
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  {/* Mobile Button */}
+  <button
+    className="md:hidden text-3xl"
+    onClick={() => setMenuOpen(!menuOpen)}
+  >
+    ☰
+  </button>
+</>
         </div>
+        
       </nav>
 
       {/* Hero */}
       <section
-        id="home"
-        className="min-h-screen flex items-center justify-center px-6 pt-24"
-      >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+  id="home"
+  className="relative overflow-hidden min-h-screen flex items-center justify-center px-6 pt-24"
+>
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute top-20 left-20 w-72 h-72 bg-orange-500/20 blur-[120px] rounded-full"></div>
+    <div className="absolute bottom-20 right-20 w-72 h-72 bg-orange-500/20 blur-[120px] rounded-full"></div>
+  </div>
+
+  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+
 
           {/* Left Side */}
           <div>
@@ -58,16 +81,25 @@ export default function Home() {
             </p>
 
             <div className="flex gap-4 mt-8">
-              <button className="bg-orange-500 hover:bg-orange-600 hover:scale-105 transition-all duration-300 px-8 py-3 rounded-full font-semibold">
-                Order Now
-              </button>
 
-              <button className="border border-gray-600 px-8 py-3 rounded-full hover:border-orange-500 hover:scale-105 transition-all duration-300">
-                View Products
-              </button>
-            </div>
-          </div>
+  <a
+  href="https://wa.me/918601372054?text=Hi%20TEXTEE,%20I%20want%20to%20order%20custom%20apparel"
+  target="_blank"
+  rel="noopener noreferrer"
+    className="bg-orange-500 hover:bg-orange-600 hover:scale-105 transition-all duration-300 px-8 py-3 rounded-full font-semibold inline-block"
+  >
+    Order Now
+  </a>
 
+<a
+  href="#products"
+  className="border border-gray-600 px-8 py-3 rounded-full hover:border-orange-500 hover:scale-105 transition-all duration-300 inline-block"
+>
+  View Products
+</a>
+
+</div>
+</div>
           {/* Right Side */}
           <div className="flex justify-center relative">
             <img
@@ -113,141 +145,145 @@ export default function Home() {
       </section>
       {/* Products Section */}
 
-      <section
-        id="products"
-        className="py-24 px-6 bg-zinc-950"
-      >
-        <div className="max-w-7xl mx-auto">
+     <section id="products" className="py-24 bg-zinc-950">
+  <div className="max-w-7xl mx-auto px-6">
 
-          <h2 className="text-4xl font-bold text-center mb-12">
-            Our Products
-          </h2>
+    {/* Section Heading */}
+    <div className="text-center mb-16">
+      <p className="text-orange-500 font-semibold tracking-wider uppercase">
+        Our Products
+      </p>
 
-          <div className="grid md:grid-cols-4 gap-8">
+      <h2 className="text-5xl font-bold mt-4">
+        Premium Custom
+        <span className="text-orange-500"> Apparel</span>
+      </h2>
 
-            <div className="bg-zinc-900 rounded-2xl overflow-hidden">
-              <img
-                src="/products/tshirt.png"
-                alt="T-Shirt"
-                className="w-full h-72 object-contain bg-white"
-              />
+      <p className="text-gray-400 mt-6 max-w-2xl mx-auto">
+        High-quality custom apparel for startups, businesses,
+        creators, schools and corporate brands.
+      </p>
+    </div>
 
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold">
-                  Custom T-Shirts
-                </h3>
-                <p className="text-gray-400 mt-2">
-                  Premium cotton custom printed T-shirts.
-                </p>
-                <p className="text-orange-500 text-2xl font-bold mt-4">
-                  ₹299
-                </p>
+    {/* Product Grid */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-                <a
-                  href="https://wa.me/918601372054?text=I want to order Custom T-Shirt"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 bg-green-500 hover:bg-green-600 px-5 py-2 rounded-lg text-white font-semibold"
-                >
-                  Order on WhatsApp
-                </a>
-              </div>
-            </div>
+      {/* Product 1 */}
+      <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-orange-500 transition-all duration-300 hover:-translate-y-2">
+        <img
+          src="/products/tshirt.png"
+          alt="Custom T-Shirt"
+          className="w-full h-72 object-cover"
+        />
 
-            <div className="bg-zinc-900 rounded-2xl overflow-hidden">
-              <img
-                src="/products/hoodie.png"
-                alt="Hoodie"
-                className="w-full h-72 object-contain bg-white"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold">
-                  Premium Hoodies
-                </h3>
-                <p className="text-gray-400 mt-2">
-                  Stylish and comfortable hoodies.
-                </p>
-                <p className="text-orange-500 text-2xl font-bold mt-4">
-                  ₹799
-                </p>
+        <div className="p-6">
+          <h3 className="text-2xl font-bold">
+            Custom T-Shirts
+          </h3>
 
-                <a
-                  href="https://wa.me/918601372054?text=I want to order Premium Hoodie"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 bg-green-500 hover:bg-green-600 px-5 py-2 rounded-lg text-white font-semibold"
-                >
-                  Order on WhatsApp
-                </a>
-              </div>
-            </div>
+          <p className="text-gray-400 mt-3">
+            Premium cotton T-shirts with custom printing.
+          </p>
 
-            <div className="bg-zinc-900 rounded-2xl overflow-hidden">
-              <img
-                src="/products/sweatshirt.png"
-                alt="Sweatshirt"
-                className="w-full h-72 object-contain bg-white"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold">
-                  Sweatshirts
-                </h3>
-                <p className="text-gray-400 mt-2">
-                  Premium winter collection.
-                </p>
-                <p className="text-orange-500 text-2xl font-bold mt-4">
-                  ₹699
-                </p>
-
-                <a
-  href="https://wa.me/918601372054?text=I want to order Sweatshirt"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-block mt-4 bg-green-500 hover:bg-green-600 px-5 py-2 rounded-lg text-white font-semibold"
->
-  Order on WhatsApp
-</a>
-
-              </div>   {/* p-6 close */}
-            </div>   {/* Sweatshirt card close */}
-
-            <div className="bg-zinc-900 rounded-2xl overflow-hidden">
-
-              <img
-                src="/products/cap.png"
-                alt="Cap"
-                className="w-full h-72 object-contain bg-white"
-              />
-
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold">
-                  Custom Caps
-                </h3>
-
-                <p className="text-gray-400 mt-2">
-                  Premium custom printed caps.
-                </p>
-
-                <p className="text-orange-500 text-2xl font-bold mt-4">
-                  ₹399
-                </p>
-
-                <a
-                  href="https://wa.me/918601372054?text=I%20want%20to%20order%20Custom%20Cap"
-                  target="_blank"
-                  className="inline-block mt-4 bg-green-500 px-5 py-2 rounded-lg"
-                >
-                  Order on WhatsApp
-                </a>
-              </div>
-            </div>
-          </div>
-
-
-
+          <a
+            href="https://wa.me/918601372054"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-block bg-orange-500 hover:bg-orange-600 px-5 py-2 rounded-full font-semibold"
+          >
+            Order Now
+          </a>
+        </div>
       </div>
-    </section>
 
+      {/* Product 2 */}
+      <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-orange-500 transition-all duration-300 hover:-translate-y-2">
+        <img
+          src="/products/hoodie.png"
+          alt="Custom Hoodies"
+          className="w-full h-72 object-cover"
+        />
+
+        <div className="p-6">
+          <h3 className="text-2xl font-bold">
+            Custom Hoodies
+          </h3>
+
+          <p className="text-gray-400 mt-3">
+            Stylish hoodies for brands, teams and creators.
+          </p>
+
+          <a
+            href="https://wa.me/918601372054"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-block bg-orange-500 hover:bg-orange-600 px-5 py-2 rounded-full font-semibold"
+          >
+            Order Now
+          </a>
+        </div>
+      </div>
+
+      {/* Product 3 */}
+      <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-orange-500 transition-all duration-300 hover:-translate-y-2">
+        <img
+          src="/products/sweatshirt.png"
+          alt="Custom Sweatshirts"
+          className="w-full h-72 object-cover"
+        />
+
+        <div className="p-6">
+          <h3 className="text-2xl font-bold">
+            Sweatshirts
+          </h3>
+
+          <p className="text-gray-400 mt-3">
+            Comfortable and premium quality sweatshirts.
+          </p>
+
+          <a
+            href="https://wa.me/918601372054"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-block bg-orange-500 hover:bg-orange-600 px-5 py-2 rounded-full font-semibold"
+          >
+            Order Now
+          </a>
+        </div>
+      </div>
+
+      {/* Product 4 */}
+      <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-orange-500 transition-all duration-300 hover:-translate-y-2">
+        <img
+          src="/products/tshirt.png"
+          alt="Corporate Merchandise"
+          className="w-full h-72 object-cover"
+        />
+
+        <div className="p-6">
+          <h3 className="text-2xl font-bold">
+            Corporate Merchandise
+          </h3>
+
+          <p className="text-gray-400 mt-3">
+            Bulk custom merchandise for companies & events.
+          </p>
+
+          <a
+            href="https://wa.me/918601372054"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-block bg-orange-500 hover:bg-orange-600 px-5 py-2 rounded-full font-semibold"
+          >
+            Order Now
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 {/* About Section */ }
 
 <section
